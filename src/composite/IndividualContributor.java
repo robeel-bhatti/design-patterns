@@ -31,16 +31,16 @@ public class IndividualContributor implements Employee {
 
     @Override
     public double getTotalCost() {
-        return 0;
+        return this.salary;
     }
 
     @Override
     public int getHeadcount() {
-        return 0;
+        return 1;
     }
 
     @Override
     public void print(int indent) {
-
+        System.out.println(" ".repeat(indent * 2) + getRole() + " - " + getName() + " (salary: " + getSalary() + ")");
     }
 }

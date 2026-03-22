@@ -1,5 +1,8 @@
 package composite;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Manager implements Employee {
 
     private String name;
@@ -8,9 +11,13 @@ public class Manager implements Employee {
 
     private double salary;
 
-    private double cost;
+    private List<Employee> employees = new ArrayList<>();
 
-    private int headCount;
+    public Manager(String name, String role, double salary) {
+        this.name = name;
+        this.role = role;
+        this.salary = salary;
+    }
 
     @Override
     public String getName() {
@@ -29,16 +36,40 @@ public class Manager implements Employee {
 
     @Override
     public double getTotalCost() {
-        return this.cost;
+        double total = this.salary;
+        for (Employee employee : employees) {
+            total += employee.getTotalCost();
+        }
+        return total;
     }
 
     @Override
     public int getHeadcount() {
-        return this.headCount;
+        int total = 1;
+
+        // The employee here can be
+        // a manager or IC, it doesn't matter
+        // because both have the same interface
+        // and methods so it's safe to call on whoever.
+        for (Employee employee : employees) {
+            total += employee.getHeadcount();
+        }
+        return total;
     }
 
     @Override
     public void print(int indent) {
+        System.out.println(" ".repeat(indent * 2) + getRole() + " - " + getName() + " (salary: " + getSalary() + ")");
+        for (Employee employee : employees) {
+            employee.print(indent + 1);
+        }
+    }
 
+    public void addEmployee(Employee employee) {
+        this.employees.add(employee);
+    }
+
+    public void removeEmployee(Employee employee) {
+        this.employees.remove(employee);
     }
 }
