@@ -3,7 +3,6 @@ package behavioral.chainOfResponsibility;
 /**
  * Abstract class to hold shared state and behavior for child classes
  * Abstract because it's not supposed to be instantiated.
- * For consistency all methods to be implemented still live in the interface
  */
 public abstract class SupportHandler {
 
