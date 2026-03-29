@@ -7,6 +7,9 @@ Some benefits I have experienced with design patterns:
 - Reduced complexity of code; easier to maintain and extend
 - Improved testability and maintainability
 
+I recommend all software engineers to read and have a basic understanding of these patterns
+to achieve the same benefits I have listed above.
+
 ## Creational Patterns
 
 | Pattern                                            | Description                              | Example                                                                       |
